@@ -15,6 +15,30 @@ body {
     width: 100%;
 }
 
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 100px;
+  width: 100px;
+  outline: #CD96C8;
+  background-size: 100%, 100%;
+  border-radius: 50%;
+  border: 1px solid #CD96C8;
+  background-image: none;
+}
+/* 
+.carousel-control-next-icon:after
+{
+  content: '>';
+  font-size: 55px;
+  color: #CD96C8;
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 55px;
+  color: #CD96C8;
+} */
+
 /* section {
     top: 0px;
     left: 0px;
