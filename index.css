@@ -22,9 +22,24 @@ body {
   outline: #CD96C8;
   background-size: 100%, 100%;
   border-radius: 50%;
-  border: 1px solid #CD96C8;
+  border: 5px solid #CD96C8;
   background-image: none;
 }
+
+.number {
+    font-size: 32px; 
+    font-weight: bold; 
+    margin-bottom: 24px;
+    line-height: 10px; 
+    padding-top: 24px;
+}
+
+@media (min-width:960px) {
+    .number {
+        font-size: 124px;
+    }
+}
+
 /* 
 .carousel-control-next-icon:after
 {

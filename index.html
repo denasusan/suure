@@ -19,17 +19,33 @@
     <script>
         function SubForm() {
             try {
-                $.ajax({
-                    url: 'https://api.apispreadsheets.com/data/Iv5lvi14kB9hWa45/',
-                    type: 'post',
-                    data: $("#myForm").serializeArray(),
-                    success: function () {
-                        alert("Form Data Submitted :)")
-                    },
-                    error: function () {
-                        alert("There was an error :(")
-                    }
-                });
+                var nama = document.getElementById("name").value;
+                var email = document.getElementById("email").value;
+                var kota = document.getElementById("city").value;
+                var kodePos = document.getElementById("kode-pos").value;
+                var alamat = document.getElementById("address").value;
+                var phoneNumber = document.getElementById("phone-number").value;
+                var box = document.getElementById("box").value;
+                var codePromotion = document.getElementById("code-promotion").value;
+
+                window.location.href = `
+                    https://wa.me/6282116184279?text=Hai saya mau order %0aNama: ${nama}%0aEmail: ${email}%0aKota: ${kota}%0aKode Pos: ${kodePos}%0aAlamat: ${alamat}%0aNo. Telepon: ${phoneNumber}%0aJumlah Box: ${phoneNumber}%0aKode Promosi: ${codePromotion}%0a
+                `;
+                
+                // $("#myForm").serializeArray().map((item) => {
+                //     console.log(item);
+                // })
+                // $.ajax({
+                //     url: 'https://api.apispreadsheets.com/data/Iv5lvi14kB9hWa45/',
+                //     type: 'post',
+                //     data: $("#myForm").serializeArray(),
+                //     success: function () {
+                //         alert("Form Data Submitted :)")
+                //     },
+                //     error: function () {
+                //         alert("There was an error :(")
+                //     }
+                // });
             } catch (error) {
                 alert(error);
             }
@@ -37,6 +53,10 @@
 
         function chatOrderToWhatsApp() {
             window.location.href = "https://wa.me/6282116184279?text=Hai saya mau order";
+        }
+
+        function chatResellerToWhatsApp() {
+            window.location.href = "https://wa.me/6282116184279?text=Hai saya mau bertanya tentang agen resmi suree";
         }
     </script>
 </head>
@@ -59,9 +79,9 @@
                                 Kenapa SUREE?
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Bahan</a></li>
-                                <li><a class="dropdown-item" href="#">Manfaat</a></li>
-                                <li><a class="dropdown-item" href="#">Kelebihan</a></li>
+                                <li><a class="dropdown-item" href="#bahan">Bahan</a></li>
+                                <li><a class="dropdown-item" href="#manfaat">Manfaat</a></li>
+                                <li><a class="dropdown-item" href="#kelebihan">Kelebihan</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -70,17 +90,17 @@
                                 Slim with FUN
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Testimoni</a></li>
-                                <li><a class="dropdown-item" href="#">Khasiat</a></li>
-                                <li><a class="dropdown-item" href="#">Packaging</a></li>
-                                <li><a class="dropdown-item" href="#">Bahaya Obesitas</a></li>
+                                <li><a class="dropdown-item" href="#testimoni">Testimoni</a></li>
+                                <li><a class="dropdown-item" href="#khasiat">Khasiat</a></li>
+                                <li><a class="dropdown-item" href="#packaging">Packaging</a></li>
+                                <li><a class="dropdown-item" href="#bahaya-obesitas">Bahaya Obesitas</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Order</a>
+                            <a class="nav-link" href="#order">Order</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Mitra</a>
+                            <a class="nav-link" href="#mitra">Mitra</a>
                         </li>
                     </ul>
                     <!-- <form class="d-flex" role="search">
@@ -103,10 +123,10 @@
                     </div>
                 </div>
             </div>
-            <div class="container-fluid">
+            <div class="container-fluid" id="packaging">
                 <div class="row d-flex align-items-between"
                     style="background-color: #EDC5E6; padding-top: 36px; padding-bottom: 36px;">
-                    <p class="" style="background-color: #EDC5E6; padding-left: 24px; font-style: italic;">*Suree
+                    <p class="" style="background-color: #EDC5E6; padding-left: 24px; font-style: italic;">Suree
                         Efektif Menurunkan Berat Badan 100% Bahan Alami</p>
                     <div class="col-12 col-sm-4 d-flex justify-content-center">
                         <video width="80%" height="auto" controls>
@@ -162,10 +182,10 @@
                     </div>
                 </div>
             </div>
-            <div class="container-fluid">
+            <div class="container-fluid" id="testimoni">
                 <div class="row d-flex align-items-between"
                     style="background-color: #EDC5E6; padding-top: 36px; padding-bottom: 36px;">
-                    <p class="" style="background-color: #EDC5E6; padding-left: 24px; font-style: italic;">*Kata Mereka
+                    <p class="" style="background-color: #EDC5E6; padding-left: 24px; font-style: italic;">Kata Mereka
                         Tentang Suree</p>
                     <div class="col-12 col-sm-4 d-flex justify-content-center">
                         <video width="80%" height="auto" controls>
@@ -245,7 +265,7 @@
                     </button>
                 </div>
             </div>
-            <div class="container-fluid">
+            <div class="container-fluid" id="bahaya-obesitas">
                 <div class="row" style="background-color: #EDC5E6;">
                     <div class="col-12 col-sm-4" style="background-color: #FFFFFF;">
                         <img src="/assets/images/14.png" style="height:auto; width:100%; margin-left: 0px;" />
@@ -274,8 +294,7 @@
                 <div class="row" style="background-color: #EDC5E6;">
                     <div class="col-12 col-sm-4 d-flex justify-content-around flex-column"
                         style="text-align: center; margin-top: 10px;">
-                        <p
-                            style="font-size: 124px; font-weight: bold; margin-bottom: 24px;line-height: 10px; padding-top: 24px;">
+                        <p class="number">
                             13
                             <span style="font-size: 24px;">
                                 Bahaya Obesitas
@@ -325,7 +344,7 @@
                     </div>
                 </div>
             </div>
-            <div class="container-fluid">
+            <div class="container-fluid" id="bahan">
                 <div class="row">
                     <div class="col-12 col-sm-8 d-flex justify-content-center flex-column"
                         style="text-align: center; margin-top: 10px;">
@@ -357,21 +376,26 @@
                     </div>
                     <div class="col-12 col-sm-6 d-flex justify-content-center flex-column"
                         style="text-align: center; margin-top: 10px;color: white;">
-                        <p style="font-size: 40px; font-weight: 700; margin-bottom: 24px;">Mengandung 2 Jenis Serat
-                            sebagai Dietary Fiber
-
+                        <p style="font-size: 28px; font-weight: 700; white-space: nowrap;">
+                            Mengandung 2 Jenis Serat <br/>
                         </p>
+                        <span style="font-size: 24px; font-weight: 700;margin-bottom: 28px;">sebagai Dietary Fiber</span>
                         <p class="d-flex justify-content-center"
                             style="font-size: 16px;font-weight: bold; margin-bottom: 24px; text-align: start;margin-left: 32px; margin-right: 24px;">
                             <div class="d-flex justify-content-center">
                                 <ol>
                                     <li
                                         style="font-size: 28px; text-align: start;margin-left: 32px; margin-right: 24px;">
-                                        Serat Tidak Larut Air (Insoluble Dietary Fiber)
+                                        Serat Tidak Larut Air <br/>
+                                        <span style="font-size: 20px;white-space: nowrap;">(Insoluble Dietary Fiber)</span>
                                     </li>
                                     <li
                                         style="font-size: 28px;  margin-bottom: 24px; text-align: start;margin-left: 32px; margin-right: 24px;">
-                                        Serat Larut Air (Soluble Dietary Fiber)
+                                        Serat Larut Air <br/>
+                                        <span style="font-size: 20px;white-space: nowrap;">
+                                        (Soluble Dietary Fiber)
+                                            
+                                        </span>
                                     </li>
                                 </ol>
                             </div>
@@ -380,13 +404,13 @@
                 </div>
             </div>
             <!-- 2 -->
-            <div class="container-fluid">
+            <div class="container-fluid" id="manfaat">
                 <div class="row" style="background-color: #EDC5E6;">
                     <div class="col-12 col-sm-6 d-flex justify-content-center flex-column"
                         style="text-align: center; margin-top: 10px;color:white;">
                         <p style="font-size: 32px; font-weight: 700; margin-bottom: 24px;">Manfaat
                             Serat Tidak Larut Air<br />
-                            <span style="font-size: 16px;">(Insoluble Dietary Fiber)
+                            <span style="font-size: 26px;">(Insoluble Dietary Fiber)
                             </span>
                         </p>
                         <div class="d-flex justify-content-center">
@@ -423,10 +447,10 @@
                     </div>
                     <div class="col-12 col-sm-6 d-flex justify-content-center flex-column"
                         style="text-align: center; margin-top: 10px;color: white;">
-                        <p style="font-size: 32px; font-weight: 700; margin-bottom: 24px;">Mengandung 2 Jenis Serat
-                            sebagai Dietary Fiber
-
+                        <p style="font-size: 28px; font-weight: 700; white-space: nowrap;">
+                            Mengandung 2 Jenis Serat <br/>
                         </p>
+                        <span style="font-size: 24px; font-weight: 700;margin-bottom: 28px;">Sebagai Dietary Fiber</span>
                         <ol>
                             <li style="font-size: 16px;  text-align: start;margin-left: 32px; margin-right: 24px;">
                                 Penahan rasa lapar
@@ -498,7 +522,7 @@
                         </p>
                         <p style="font-size: 28px; margin-bottom: 24px;color: black; padding-bottom: 24px;">mengandung
                         </p>
-                        <p style="font-size: 100px; font-weight: 900; line-height: 10px;">10
+                        <p class="number">10
                             <span style="font-size: 28px;">Buah dan sayur</span>
                         </p>
                     </div>
@@ -677,7 +701,7 @@
                 </div>
             </div>
 
-            <div class="container-fluid">
+            <div class="container-fluid" id="khasiat">
                 <div class="row" style="background-color: white; color: #D67BE4;">
                     <div class="col-12 col-sm-8 d-flex justify-content-center flex-column"
                         style="text-align: center; margin-top: 10px;">
@@ -701,7 +725,7 @@
                     </div>
                 </div>
             </div>
-            <div class="container-fluid">
+            <div class="container-fluid" id="kelebihan">
                 <div class="row">
                     <div class="col-12 col-sm-7 d-flex justify-content-center flex-column"
                         style="text-align: center; margin-top: 10px;color: #D67BE4;">
@@ -771,7 +795,7 @@
             <div class="container-fluid">
                 <div class="row" style="background-color: #CD96C8; padding-bottom: 24px; padding-top: 24px;">
                     <div class="col-12 col-sm-6  d-flex justify-content-center align-items-center">
-                        <img src="/assets/images/model-1-circle.png"
+                        <img src="/assets/images/nano.png"
                             style="height:auto; width:60%; margin-left: 0px;margin-top: 32px;margin-bottom: 32px; color: white;" />
                     </div>
                     <div class="col-12 col-sm-6 d-flex justify-content-center flex-column"
@@ -787,7 +811,7 @@
                 </div>
             </div>
 
-            <div class="container-fluid">
+            <div class="container-fluid" id="order">
                 <div class="row" style="background-color: white; padding-bottom: 24px; padding-top: 24px;">
                     <div class="col-12  d-flex justify-content-center">
                         <img src="/assets/images/model-1.png"
@@ -803,10 +827,10 @@
             <div class="container">
                 <div class="row" style="background-color: white; padding-bottom: 24px; padding-top: 24px;">
                     <p style="font-size: 40px; padding-top: 2px; font-weight: bold; text-align: center;">
-                        Diskon
-                        <!-- <span style="text-decoration: line-through; font-size: 28px;">450.000
-                        </span> -->
-                        <span style="color: red; font-size: 56px;">50%</span>
+                        Harga Rp
+                        <span style="text-decoration: line-through; font-size: 28px;"> 450.000
+                        </span>
+                        <span style="color: red; font-size: 56px;"> 209.000</span>/box
 
                     </p>
                 </div>
@@ -814,50 +838,50 @@
             <div class="container">
                 <div class="row d-flex justify-content-center align-items-center" style="margin-bottom: 52px">
                     <div class="col-10 col-sm-6"
-                        style="padding-right: 10px; margin-bottom: 20px;padding-left: 10px;font-size: 32px;background-color: #CD96C8;width: 100%; border-radius: 10px; padding-top: 8px;">
+                        style="padding-right: 10px; margin-bottom: 20px;padding-left: 10px;font-size: 32px;background-color: #CD96C8;width: 100%; border-radius: 10px; padding-top: 8px; margin-left: 20px; margin-right: 20px;">
                         <a style="text-decoration: none;"
                             href="https://api.whatsapp.com/send/?phone=6282116184279&text=Hai+saya+mau+order&type=phone_number&app_absent=0">
-                            <p style="margin-top: 10px;text-align: center; color: white;">Klik Disini untuk ORDER</p>
+                            <p style="border-radius: 8px; margin-top: 10px;text-align: center; color: white;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">Klik Disini untuk ORDER</p>
                         </a>
                     </div>
                     <p style="margin-top: 10px;text-align: center;font-size: 12px;">Atau pesan melalui online shop kami
 
                     <div class="col-12 col-sm-6"
-                        style="margin-top: 10px;margin-right: 20px;padding-right: 10px;padding-left: 10px;font-size: 32px;background-color: #eb4d30;width: auto; border-radius: 10px; padding-top: 8px;">
+                        style="margin-top: 10px;margin-right: 20px;padding-right: 10px;padding-left: 10px;font-size: 32px;width: auto; border-radius: 10px; padding-top: 8px;">
                         <a style="margin-top: 10px;text-align: center; color: white; text-decoration: none;"
                             href="https://shopee.co.id/buyer/login?next=https%3A%2F%2Fshopee.co.id%2Fsureenature.id">
-                            <img src="/assets/images/shopee.png" style="width: 64px;height: auto;"/>
+                            <img src="/assets/images/shopee.jpeg" style="width: 124px;height: auto;"/>
                         </a>
                     </div>
                     <div class="col-12 col-sm-6"
-                        style="margin-top: 10px;margin-right: 20px;padding-right: 10px;padding-left: 10px;font-size: 32px;background-color: #2c5f2a;width: auto; border-radius: 10px; padding-top: 8px;">
+                        style="margin-top: 10px;margin-right: 20px;padding-right: 10px;padding-left: 10px;font-size: 32px;width: auto; border-radius: 10px; padding-top: 8px;">
                         <a style="margin-top: 10px;text-align: center; color: white; text-decoration: none;"
                             href="https://www.tokopedia.com/sureenature">
-                            <img src="/assets/images/tokopedia.png" style="width: 64px;height: auto;"/>
+                            <img src="/assets/images/tokopedia.png" style="width: 124px;height: auto;"/>
                             
                         </a>
                     </div>
                     <div class="col-10 col-sm-6 "
-                        style="margin-top: 10px; margin-right: 20px;padding-right: 10px;padding-left: 10px;font-size: 32px;background-color: #278acb;width: auto; border-radius: 10px; padding-top: 8px;">
-                        <a style="margin-top: 10px;text-align: center; color: white; text-decoration: none;"
+                        style="margin-top: 10px; margin-right: 20px;padding-right: 10px;padding-left: 10px;font-size: 32px;width: auto; border-radius: 10px; padding-top: 8px;">
+                        <a style="margin-top: 10px;text-align: center; text-decoration: none;"
                             href="https://www.blibli.com/merchant/suree-nature-indonesia/SUN-70084">
-                            <img src="/assets/images/blibli.png" style="width: 64px;height: 100%;""/>
+                            <img src="/assets/images/blibli.png" style="width: 124px;height: auto;"/>
 
                         </a>
                     </div>
                     <div class="col-10 col-sm-6"
-                        style="margin-top: 10px;margin-right: 20px;padding-right: 10px;padding-left: 10px;font-size: 32px;background-color: #ce204f;width: auto; border-radius: 10px; padding-top: 8px;">
-                        <a style="margin-top: 10px;text-align: center; color: white; text-decoration: none;"
+                        style="margin-top: 10px;margin-right: 20px;padding-right: 10px;padding-left: 10px;font-size: 32px;width: auto; border-radius: 10px; padding-top: 8px;">
+                        <a style="margin-top: 10px;text-align: center; text-decoration: none;"
                             href="https://www.bukalapak.com/u/suree_nature_indonesia_713905?from=omnisearch&from_keyword_history=false&search_source=omnisearch_user&source=navbar">
-                            <img src="/assets/images/simple-icons_bukalapak.png" style="width: 64px;height: auto;min-height: 100%;"/>
+                            <img src="/assets/images/bukalapak.jpeg" style="width: 120px;height: 100%;min-height: auto;"/>
                             
                         </a>
                     </div>
                     <div class="col-10 col-sm-6"
-                        style="margin-top: 10px;margin-right: 20px;padding-right: 10px;padding-left: 10px;font-size: 32px;background-color: #10156d;width: auto; border-radius: 10px; padding-top: 8px;">
-                        <a style="margin-top: 10px;text-align: center; color: white; text-decoration: none;"
+                        style="margin-top: 10px;margin-right: 20px;padding-right: 10px;padding-left: 10px;font-size: 32px;width: auto; border-radius: 10px; padding-top: 8px;">
+                        <a style="margin-top: 10px;text-align: center; text-decoration: none;"
                             href="https://www.lazada.co.id/shop/suree-nature-indonesia/?path=promotion-33998-0.htm&tab=promotion">
-                            <img src="/assets/images/lazada.png" style="width: 64px;height: auto;min-height: 100%;"/>
+                            <img src="/assets/images/lazada.jpeg" style="width: 120px;height: auto;min-height:auto;"/>
                             
                         </a>
                     </div>
@@ -866,67 +890,67 @@
                         <p style="margin-top: 10px;text-align: center;font-size: 12px;">Atau Order melalui form dibawah
                             ini</p>
                         <div class="row justify-content-around align-items-xl-center" style="background-color: #CD96C8;font-size: 16px; padding-top: 20px;padding-bottom: 20px; border-radius: 10px;">
-                            <div class="col-6">
+                            <div class="col-11 col-sm-6">
                                 <form id="myForm">
                                     <div class="form-group">
-                                        <label for="name">Nama*</label>
-                                        <input type="text" class="form-control" name="name" aria-describedby="name">
+                                        <label for="name">Nama</label>
+                                        <input type="text" class="form-control" name="name" id="name" aria-describedby="name" value="">
 
                                     </div>
                                     <div class="form-group">
-                                        <label for="email">Email*</label>
-                                        <input type="text" class="form-control" name="email" aria-describedby="email">
+                                        <label for="email">Email</label>
+                                        <input type="text" class="form-control" name="email" id="email" aria-describedby="email">
 
                                     </div>
                                     <div class="form-group">
                                         <label for="city">Kota</label>
-                                        <input type="text" class="form-control" name="city" aria-describedby="city">
+                                        <input type="text" class="form-control" name="city" id="city" aria-describedby="city">
 
                                     </div>
                                     <div class="form-group">
-                                        <label for="kode-pos">Kode Pos*</label>
-                                        <input type="text" class="form-control" name="kode-pos"
-                                            aria-describedby="kode-pos">
+                                        <label for="kode-pos">Kode Pos</label>
+                                        <input type="text" class="form-control" name="kode-pos" id="kode-pos"
+                                            aria-describedby="kode-pos"> 
 
                                     </div>
                                     <div class="form-group">
                                         <label for="address">Alamat</label>
-                                        <input type="text" class="form-control" name="address"
+                                        <input type="text" class="form-control" name="address" id="address"
                                             aria-describedby="address">
 
                                     </div>
                                     <div class="form-group">
-                                        <label for="phone-number">No. Hp*</label>
-                                        <input type="text" class="form-control" name="phone-number"
+                                        <label for="phone-number">No. Hp</label>
+                                        <input type="text" class="form-control" name="phone-number" id="phone-number"
                                             aria-describedby="phone-number">
 
                                     </div>
                                     <div class="form-group">
-                                        <label for="item">Item*</label>
-                                        <input type="text" class="form-control" name="item" aria-describedby="item">
+                                        <label for="box">Box</label>
+                                        <input type="text" class="form-control" name="box" id="box" aria-describedby="item">
 
                                     </div>
                                     <div class="form-group">
-                                        <label for="code-promotion">Kode Promo*</label>
-                                        <input type="text" class="form-control" name="code-promotion"
+                                        <label for="code-promotion">Kode Promo</label>
+                                        <input type="text" class="form-control" name="code-promotion" id="code-promotion"
                                             aria-describedby="code-promotion">
 
                                     </div>
-                                    <div class="form-group form-check">
+                                    <!-- <div class="form-group form-check">
                                         <input type="checkbox" class="form-check-input" id="agree-to-call">
                                         <label class="form-check-label" for="agree-to-call">Saya menyetujui untuk
                                             menerima segala
                                             bentuk
                                             info dan promosi dari Suree dalam bentuk e-mail, panggilan maupun
                                             SMS.</label>
-                                    </div>
+                                    </div> -->
                                 </form>
-                                <button onclick='SubForm()' class="btn btn-primary">Submit</button>
+                                <button style="margin-top: 10px;" onclick='SubForm()' class="btn btn-primary">Order</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="container">
+                <div class="container" id="mitra">
                     <div class="row" style="background-color: white; padding-bottom: 24px; padding-top: 24px;">
                         <div class="col-12  d-flex justify-content-start" style="margin-top: 48px;">
                             <p style="font-size: 18px; padding-top: 2px; font-style: italic;">
@@ -1070,7 +1094,7 @@
             <p>Klik Bergabung Sekarang!!</p>
             <div class="d-flex align-items-center justify-content-center">
                 <a style=" text-decoration: none;"
-                    href="https://api.whatsapp.com/send/?phone=6282116184279&text=Hai+saya+mau+order&type=phone_number&app_absent=0">
+                    href="https://api.whatsapp.com/send/?phone=6282116184279&text=Hai+saya+mau+bertanya+tentang+agen+resmi+suree&type=phone_number&app_absent=0">
                     <p
                         style="border-radius: 30px;cursor: pointer; background-color: white; padding: 10px;color: #2c5f2a; padding-left: 20px;padding-right: 20px;">
                         Bergabung Sekarang</p>
